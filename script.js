@@ -39,6 +39,14 @@ function addExpense(event) {
     const expenseItem = document.createElement('li');
     expenseItem.textContent = `${expenseName}: $${expenseAmount}`;
 
+    for (let i = 0; i < expenseList.children.length; i++) {
+        const [name, amount] = expenseList.children[i].textContent.split(': $');
+        if (expenseName === name) {
+            alert('This expense already exists in the list.');
+            return; // Exit the function if the expense already exists
+        }
+    }
+
 
 
     // Add the expense item to the list
@@ -50,6 +58,20 @@ function addExpense(event) {
     document.getElementById('expense-name').value = '';
     document.getElementById('expense-amount').value = '';
     storeExpenses(expenseName, expenseAmount); // Store the expense in local storage
+}
+
+// Function to grab, modify and save back localStorage expenses
+function updateLocalStorage() {
+    const expenses = [];
+    const expenseItems = expenseList.getElementsByTagName('li');
+
+    for (let i = 0; i < expenseItems.length; i++) {
+        const expenseText = expenseItems[i].textContent;
+        const [name, amount] = expenseText.split(': $');
+        expenses.push({ name, amount: parseFloat(amount) });
+    }
+
+    localStorage.setItem('expenses', JSON.stringify(expenses));
 }
 
 // Function to update the total expenses displayed
@@ -73,6 +95,7 @@ function deleteExpense(event) {
         for ( i = 0; i < checkbox.length; i++) {
             const expenseItem = checkbox[i].parentElement;
             expenseList.removeChild(expenseItem);
+            updateLocalStorage(); // Update local storage after deletion
         updateTotalExpenses();
     }
 }
