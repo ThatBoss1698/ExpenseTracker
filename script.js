@@ -7,9 +7,9 @@ const totalExpensesSpan = document.getElementById('total-expenses');
 
 // Function to store local memory of expenses
 
-function storeExpenses(expenseName, expenseAmount) {
+function storeExpenses(expenseName, expenseAmount, expenseDate) {
     const expenses = JSON.parse(localStorage.getItem('expenses')) || [];
-    expenses.push({ name: expenseName, amount: expenseAmount });
+    expenses.push({ name: expenseName, amount: expenseAmount, date: expenseDate });
     localStorage.setItem('expenses', JSON.stringify(expenses));
 
 }
@@ -19,7 +19,7 @@ function loadExpenses() {
 
     expenses.forEach(expense => {
         const expenseItem = document.createElement('li');
-        expenseItem.textContent = `${expense.name}: $${expense.amount}`;
+        expenseItem.textContent = `${expense.name} : $${expense.amount} (${expense.date})`;
         expenseList.appendChild(expenseItem);
         createCheckboxes(); // Apply checkbox style to the new item
     });
@@ -34,13 +34,14 @@ function addExpense(event) {
     // Get the values from the form inputs
     const expenseName = document.getElementById('expense-name').value;
     const expenseAmount = document.getElementById('expense-amount').value;
+    const expenseDate = document.getElementById('expense-date').value;
 
     // Create a new list item for the expense
     const expenseItem = document.createElement('li');
-    expenseItem.textContent = `${expenseName}: $${expenseAmount}`;
+    expenseItem.textContent = `${expenseName} : $${expenseAmount} (${expenseDate})`;
 
     for (let i = 0; i < expenseList.children.length; i++) {
-        const [name, amount] = expenseList.children[i].textContent.split(': $');
+        const [name, amount, date] = expenseList.children[i].textContent.split(') $');
         if (expenseName === name) {
             alert('This expense already exists in the list.');
             return; // Exit the function if the expense already exists
@@ -57,7 +58,8 @@ function addExpense(event) {
     // Clear the form inputs
     document.getElementById('expense-name').value = '';
     document.getElementById('expense-amount').value = '';
-    storeExpenses(expenseName, expenseAmount); // Store the expense in local storage
+    document.getElementById('expense-date').value = '';
+    storeExpenses(expenseName, expenseAmount, expenseDate); // Store the expense in local storage
 }
 
 // Function to grab, modify and save back localStorage expenses
@@ -67,8 +69,8 @@ function updateLocalStorage() {
 
     for (let i = 0; i < expenseItems.length; i++) {
         const expenseText = expenseItems[i].textContent;
-        const [name, amount] = expenseText.split(': $');
-        expenses.push({ name, amount: parseFloat(amount) });
+        const [name, amount, date] = expenseText.split(') $');
+        expenses.push({ name, date, amount: parseFloat(amount) });
     }
 
     localStorage.setItem('expenses', JSON.stringify(expenses));
@@ -82,6 +84,7 @@ function updateTotalExpenses() {
     for (let i = 0; i < expenses.length; i++) {
         const expenseText = expenses[i].textContent;
         const amount = parseFloat(expenseText.split('$')[1]);
+        const date = expenseText.split('(')[1].split(')')[0]; // Extract the date from the text
         total += amount;
     }
 

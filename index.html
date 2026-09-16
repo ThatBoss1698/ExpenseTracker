@@ -4,23 +4,33 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Expense Tracker</title>
-        <h1>Expense Tracker</h1>
+        <h1 id="expense-title">Expense Tracker</h1>
+        <h3 id="expense-subtitle">Keep track of your bills. Stay in control!</h3>
     </head>
-    <body>
+    
         <style>
             @import url('style.css');
         </style>
-        <div className='tc bg-light-green dib br3 pa3 ma2 grow bw2 shadow-5'>
+            <div class="expense-text">
+            <body>
             <form id="expense-form">
                 <input type="text" id="expense-name" placeholder="Expense Name" required>
                 <input type="number" id="expense-amount" placeholder="Amount" required>
-                <button type="submit">Add Expense</button>
+                <input type="date" id="expense-date" placeholder="Date"required>
+                <button type="submit" id="submit-expenses">Add Expense</button>
                 <button type="button" id="clear-expenses">Clear Expenses</button>
                 <button type="button" id="delete-expenses">Delete Selected</button>
-                <h4>Total Expenses: $<span id="total-expenses">0</span></h4>
             </form>
-            <ul id="expense-list"> </ul>
         </div>
+
+        <div class="total-expenses"> >
+                <h3>Total Expenses: $ <span id="total-expenses">0</span></h3>
+                <h1> Bill      Amount     Date</h1>
+                <h3><ul id="expense-list"> </ul></h3>
+        </div>   
+
+
+            
+            </body>
         <script src="script.js"></script>
-    </body>
-</html>
+        </html>
