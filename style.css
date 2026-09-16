@@ -8,6 +8,22 @@ html {
 
 }
 
+#total-expenses {
+    color: white;
+}
+
+.total-expenses {
+    position: fixed;
+    top: 200px;
+    right: 150px;
+    background-color: #16283F;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 450px;
+
+}
+
 #delete-expenses {
     position: relative;
     bottom: 120px;
@@ -50,34 +66,36 @@ html {
     color: white;
     padding: 20px;
     border-radius: 10px;
+    width: 300px;
 }
 
 #expense-amount {
     position: relative;
     bottom: 10px;
-    right: 500px;
+    right: 400px;
     background-color: #16283F;
     color: white;
     padding: 20px;
     border-radius: 10px;
-
+    width: 300px;
 }
 
 #expense-date {
     position: relative;
     bottom: 70px;
-    right: 250px;
+    right: 0px;
     background-color: #16283F;
     color: white;
     padding: 20px;
     border-radius: 10px;
+    width: 300px;
 
 }
 
 .expense-text {
     position: relative;
     top: 50px;
-    left: 50px;
+    left: 0px;
     background-color: #1E3A5F;
     color: white;
     padding: 20px;
@@ -85,29 +103,27 @@ html {
 
 }
 
-.total-expenses {
+.expense-list {
     position: relative;
+    text-align: center;
     top: 50px;
-    left: 50px;
+    left: 0px;
     background-color: #1E3A5F;
     color: white;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 5px;
+    border-radius: 1px;
 
 }
 
 #expense-title {
-    text-align: center;
-    margin-top: 20px;
     color: white;
+    text-align: center;
 }
 
 #expense-subtitle {
-    text-align: center;
-    margin-top: 10px;
     color: #57737a;
+    text-align: center;
 }
-
 
 #expense-form {
     display: flex;
@@ -116,6 +132,14 @@ html {
     margin-top: 20px;
 }
 
+#logo {
+    position: relative;
+    top: 90px;
+    left: 625px;
+    display: block;
+    width: 150px; /* Adjust the size as needed */
+    height: auto;
+}
 
 ul {
     list-style-type: none;

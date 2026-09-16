@@ -89,7 +89,7 @@ function updateTotalExpenses() {
     }
 
     totalExpensesSpan.textContent = total.toFixed(2);
-    totalExpensesSpan.style.color = total > 1000 ? 'red' : 'black'; // Change color if total exceeds $1000
+    totalExpensesSpan.style.color = total > 1000 ? 'red' : 'white'; // Change color if total exceeds $1000
 }
 // Function to delete selected expenses from the list
 function deleteExpense(event) {

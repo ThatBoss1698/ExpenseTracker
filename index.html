@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Expense Tracker</title>
-        <h1 id="expense-title">Expense Tracker</h1>
+        <h1 id="expense-title"><img src="logo.png" alt="Expense Tracker Logo" id="logo"> Expense Tracker</h1>
         <h3 id="expense-subtitle">Keep track of your bills. Stay in control!</h3>
     </head>
     
@@ -21,11 +21,11 @@
                 <button type="button" id="clear-expenses">Clear Expenses</button>
                 <button type="button" id="delete-expenses">Delete Selected</button>
             </form>
+            <h3 class="total-expenses">Total Expenses: $ <span id="total-expenses">0</span></h3>
         </div>
 
-        <div class="total-expenses"> >
-                <h3>Total Expenses: $ <span id="total-expenses">0</span></h3>
-                <h1> Bill      Amount     Date</h1>
+        <div class="expense-list">
+                <h1> Bills</h1>
                 <h3><ul id="expense-list"> </ul></h3>
         </div>   
 
